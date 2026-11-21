@@ -2,7 +2,9 @@
 
 ## Hexagonal work index
 
-Six projects sit around an interactive hexagon. Select a panel or use Previous and Next to browse, then open the project dialog. Left and right arrow keys work while focused on a panel.
+Six projects sit around a rotating hexagon. Select a panel or use Previous and Next to move that project to the top, then open the project dialog. Left and right arrow keys work while focused on a panel.
+
+The All projects section below the hexagon lists 24 entries and can be filtered by category.
 
 ## Run locally
 

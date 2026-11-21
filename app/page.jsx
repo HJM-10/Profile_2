@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import ProjectArchive from "./project-archive";
 
 const projects = [
   { title: "DNF Trading", type: "3D configurator", image: "/instruments.png", description: "A product catalog and ordering platform with a live 3D customizer. My work included the customer workflow, admin dashboard, and instrument configuration options." },
@@ -12,12 +13,18 @@ const projects = [
 ];
 
 export default function WorkIndex() {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [turn, setTurn] = useState(0);
   const dialog = useRef(null);
+  const selectedIndex = ((turn % projects.length) + projects.length) % projects.length;
   const selected = projects[selectedIndex];
 
   function move(step) {
-    setSelectedIndex((index) => (index + step + projects.length) % projects.length);
+    setTurn(previous => previous + step);
+  }
+
+  function select(index) {
+    const forward = (index - selectedIndex + projects.length) % projects.length;
+    move(forward > projects.length / 2 ? forward - projects.length : forward);
   }
 
   function navigateWithKeys(event) {
@@ -31,7 +38,10 @@ export default function WorkIndex() {
     <main className="archive">
       <header className="bar">
         <span>Huzaifa Jayyad</span>
-        <a href="https://github.com/HJM-10">GitHub</a>
+        <nav aria-label="Main navigation">
+          <a href="#all-projects">All projects</a>
+          <a href="https://github.com/HJM-10">GitHub</a>
+        </nav>
       </header>
       <div className="index">
         <div className="hexagon" role="group" aria-label="Project selector" onKeyDown={navigateWithKeys}>
@@ -39,18 +49,20 @@ export default function WorkIndex() {
             <h1>Work index</h1>
             <span>Huzaifa Jayyad</span>
           </div>
+          <div className="ring" style={{ "--spin": `${turn * -60}deg` }}>
           {projects.map((project, index) => (
             <button
               className={`panel panel-${index + 1}`}
               type="button"
               key={project.title}
               aria-pressed={index === selectedIndex}
-              onClick={() => setSelectedIndex(index)}
+              onClick={() => select(index)}
             >
               <img src={project.image} alt="" />
               <span>{project.title}</span>
             </button>
           ))}
+          </div>
         </div>
         <div className="selection">
           <button type="button" onClick={() => move(-1)}>Previous</button>
@@ -64,6 +76,8 @@ export default function WorkIndex() {
           <button type="button" onClick={() => move(1)}>Next</button>
         </div>
       </div>
+
+      <ProjectArchive />
 
       <dialog ref={dialog} aria-labelledby="project-title">
         <form method="dialog"><button type="submit">Close</button></form>
