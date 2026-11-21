@@ -6,6 +6,8 @@ Six projects sit around a rotating hexagon. Select a panel or use Previous and N
 
 The All projects section below the hexagon presents 24 visual covers in four scroll-driven chapters. Use the project picker to jump to a cover, or select a cover to read the details. Reduced-motion users get a visual grid.
 
+Project covers include original frontend captures with sample data where applicable, project imagery, and labeled research concept artwork.
+
 ## Run locally
 
 Use Node.js 20.9 or later.

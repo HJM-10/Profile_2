@@ -5,7 +5,7 @@ import { ProjectArtwork, showcase } from "./project-artwork";
 import "./project-showcase.css";
 
 const groups = [showcase.slice(0, 6), showcase.slice(6, 12), showcase.slice(12, 18), showcase.slice(18)];
-const chapterTitles = ["Applications", "Web experiences", "Tools and automation", "Research and experiments"];
+const chapterTitles = ["Applications", "AI and research", "Web experiences", "Tools and experiments"];
 
 export default function ProjectArchive() {
   const [active, setActive] = useState(0);
@@ -135,7 +135,7 @@ export default function ProjectArchive() {
         <form method="dialog"><button type="submit" autoFocus>Close</button></form>
         <ProjectArtwork project={selected} />
         <div className="showcase-dialog-copy">
-          <p>{selected.status}{selected.image ? "" : " · Concept illustration"}</p>
+          <p>{selected.status}{selected.sourceLabel ? ` · ${selected.sourceLabel}` : selected.image ? "" : " · Concept illustration"}</p>
           <h3 id="showcase-title">{selected.title}</h3>
           <p>{selected.description}</p>
         </div>

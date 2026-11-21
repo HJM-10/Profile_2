@@ -76,6 +76,14 @@
 .showcase-card .project-art { border-radius: clamp(.45rem, 1.1vw, 1.1rem); box-shadow: 0 22px 55px #100b1e40; }
 .showcase-card[data-current="false"] .project-art { border-radius: 10% 5% 9% 4% / 6% 4% 7% 3%; }
 .project-art > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.art-screen { background: radial-gradient(ellipse at 66% 18%, color-mix(in srgb, var(--art-accent), var(--art-ink) 58%), var(--art-ink) 78%); }
+.project-art.art-screen > img { inset:5.5% 5% auto; width:90%; height:75%; object-fit:contain; object-position:center; filter:drop-shadow(0 12px 18px #06051272); }
+.art-screen .art-caption { inset:auto clamp(.85rem,3vw,2.4rem) clamp(.75rem,3vw,1.6rem); }
+.art-screen .art-caption strong { font-size:clamp(1.45rem,4vw,4.2rem); }
+.art-screen::after { background:linear-gradient(transparent 67%,#07071194); }
+@media (max-width:650px) {
+  .project-art.art-screen > img { inset:10% 4% auto; width:92%; height:67%; }
+}
 .project-art::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: linear-gradient(transparent 50%, #070711d9); }
 .art-caption { position: absolute; z-index: 1; inset: auto clamp(1rem, 3.5vw, 3.8rem) clamp(1rem, 3.3vw, 3rem); display: grid; justify-items: start; text-align: left; }
 .art-caption strong { font-size: clamp(1.65rem, 5.4vw, 5.8rem); line-height: .88; letter-spacing: -.065em; overflow-wrap: anywhere; }
