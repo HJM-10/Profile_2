@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import ProjectArchive from "./project-archive";
+import ScrollMotion from "./scroll-motion";
 
 const projects = [
   { title: "DNF Trading", type: "3D configurator", image: "/instruments.png", description: "A product catalog and ordering platform with a live 3D customizer. My work included the customer workflow, admin dashboard, and instrument configuration options." },
@@ -36,6 +37,7 @@ export default function WorkIndex() {
 
   return (
     <main className="archive">
+      <ScrollMotion />
       <header className="bar">
         <span>Huzaifa Jayyad</span>
         <nav aria-label="Main navigation">
@@ -43,7 +45,7 @@ export default function WorkIndex() {
           <a href="https://github.com/HJM-10">GitHub</a>
         </nav>
       </header>
-      <div className="index">
+      <div className="index" data-scroll-scene>
         <div className="hexagon" role="group" aria-label="Project selector" onKeyDown={navigateWithKeys}>
           <div className="center">
             <h1>Work index</h1>

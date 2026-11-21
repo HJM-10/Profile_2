@@ -4,7 +4,7 @@
 
 Six projects sit around a rotating hexagon. Select a panel or use Previous and Next to move that project to the top, then open the project dialog. Left and right arrow keys work while focused on a panel.
 
-The All projects section below the hexagon lists 24 entries and can be filtered by category.
+The All projects section below the hexagon presents 24 visual covers in four scroll-driven chapters. Use the project picker to jump to a cover, or select a cover to read the details. Reduced-motion users get a visual grid.
 
 ## Run locally
 
