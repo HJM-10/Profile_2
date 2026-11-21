@@ -1,0 +1,45 @@
+* { box-sizing: border-box; }
+body { margin: 0; color: #191917; background: #f6f3ee; font: 1rem/1.45 Arial, sans-serif; }
+button { font: inherit; color: inherit; cursor: pointer; }
+a { color: inherit; text-underline-offset: .3em; }
+button:focus-visible, a:focus-visible { outline: 2px solid #4b4935; outline-offset: 4px; }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid #cec9bf; }
+.bar span { font-weight: 700; }
+.archive { min-height: 100svh; padding: .4rem clamp(1rem, 5vw, 5rem) 2rem; }
+.index { margin: clamp(.75rem, 2vh, 1.5rem) auto 0; }
+.hexagon { width: min(720px, 78vh, 100%); aspect-ratio: 1.16; position: relative; margin: auto; }
+.center { position: absolute; inset: 24% 17%; display: grid; place-content: center; text-align: center; pointer-events: none; }
+.center h1 { font-size: clamp(1.3rem, 3.2vw, 2.6rem); font-weight: 500; line-height: 1.05; text-transform: uppercase; letter-spacing: .10em; margin: 0 0 .45em; }
+.center span { color: #55534f; }
+.panel { position: absolute; left: var(--left); top: var(--top); width: var(--width); height: var(--height); clip-path: polygon(var(--shape)); padding: 0; border: 0; background: #ddd9d0; isolation: isolate; }
+.panel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(.55) brightness(.84); transition: filter 280ms, scale 360ms; }
+.panel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(150deg, #fff0 20%, #26231c28 85%); pointer-events: none; }
+.panel:is(:hover, :focus-visible, [aria-pressed="true"]) img { filter: saturate(1) brightness(1); scale: 1.045; }
+.panel:is(:focus-visible, [aria-pressed="true"]) span { background: #181815; color: white; }
+.panel span { z-index: 1; position: absolute; top: var(--label-y); left: var(--label-x); padding: .22em .52em; border: 1px solid #fff8; color: #141412; background: #f6f3eaeb; font-size: clamp(.65rem, 1.55vw, .92rem); font-weight: 700; white-space: nowrap; transform: translate(-50%, -50%) rotate(var(--angle, 0deg)); }
+.panel-1 { --left:25%; --top:5%; --width:50%; --height:18%; --shape:0 0, 100% 0, 84% 100%, 16% 100%; --label-x:50%; --label-y:28%; }
+.panel-2 { --left:67%; --top:5%; --width:33%; --height:45%; --shape:24.24% 0, 100% 100%, 48.48% 100%, 0 40%; --label-x:55%; --label-y:51%; --angle:53deg; }
+.panel-3 { --left:67%; --top:50%; --width:33%; --height:45%; --shape:100% 0, 24.24% 100%, 0 60%, 48.48% 0; --label-x:55%; --label-y:49%; --angle:-53deg; }
+.panel-4 { --left:25%; --top:77%; --width:50%; --height:18%; --shape:100% 100%, 0 100%, 16% 0, 84% 0; --label-x:50%; --label-y:67%; }
+.panel-4 img { object-position: center 34%; }
+.panel-5 { --left:0%; --top:50%; --width:33%; --height:45%; --shape:75.76% 100%, 0 0, 51.52% 0, 100% 60%; --label-x:45%; --label-y:49%; --angle:53deg; }
+.panel-6 { --left:0%; --top:5%; --width:33%; --height:45%; --shape:0 100%, 75.76% 0, 100% 40%, 51.52% 100%; --label-x:45%; --label-y:51%; --angle:-53deg; }
+.selection { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; text-align: center; gap: clamp(.45rem, 2vw, 2rem); margin: .25rem auto 0; width: min(570px, 100%); }
+.selection button, dialog button { background: transparent; border: 1px solid #bdb6a9; padding: .6rem .9rem; border-radius: 2rem; }
+.selection button:hover, dialog button:hover { background: #e8e1d5; }
+.active-project p { color: #57534d; margin: 0; font-size: .95rem; }
+.active-project h2 { margin: .12em 0; line-height: 1.1; font-size: clamp(1.25rem, 4vw, 2.7rem); letter-spacing: -.05em; }
+.selection .details { border: 0; padding: .2rem .45rem; border-radius: 0; text-decoration: underline; text-underline-offset: .25em; }
+dialog { width: min(620px, calc(100vw - 2rem)); border: 1px solid #afa99e; background: #f6f3ee; color: #191917; max-height: 90svh; padding: 1.2rem; }
+dialog::backdrop { background: #13120fbe; }
+dialog form { text-align: right; margin-bottom: .7rem; }
+dialog img { display: block; width: 100%; aspect-ratio: 2 / 1; object-fit: cover; }
+dialog h2 { margin: -.65rem 0 0; }
+@media (max-width: 490px) {
+  .archive { padding-inline: .75rem; }
+  .index { margin-top: 3rem; }
+  .selection { margin-top: 1rem; }
+  .center span, .active-project p { font-size: .78rem; }
+  .selection button { font-size: .86rem; }
+}
+@media (prefers-reduced-motion: reduce) { .panel img { transition: none; } }
